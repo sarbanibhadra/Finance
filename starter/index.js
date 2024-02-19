@@ -94,7 +94,7 @@ var bigChange = 0;
 var smalChange = 0;
 var smalChangeDate = 0;
 var bigChangeDate = 0;
-
+console.log("Month: "+ finances.length)
 for (let i=0; i<finances.length; i++) {
 
   finElement = finances[i];
@@ -104,7 +104,6 @@ for (let i=0; i<finances.length; i++) {
     console.log(change)
   } else {
     change =  finElement[1] - change;
-    console.log(change)
     totalChange = totalChange + change;
     if (change > bigChange){
       bigChange = change;
@@ -112,15 +111,13 @@ for (let i=0; i<finances.length; i++) {
     } else if (change < smalChange){
       smalChange = change;
       smalChangeDate = finElement[0];
-      console.log("f  == "+finElement)
+      console.log("finElement  == "+finElement)
     }
     change = finElement[1];
   }
-
-  console.log(totalChange)
-
+  console.log("totalChange=  "+totalChange)
 }
-console.log("T==="+total)
+console.log("Total==="+total)
 var bodyE = $("#magic-div")
 var divE = $("<div>")
 divE.append("Total Months: "+ finances.length)
@@ -129,12 +126,15 @@ var divTotalE = $("<div>")
 divTotalE.append("Total: $" + total) 
 divTotalE.addClass("div-centered")
 var divAvgCngE = $("<div>")
+console.log("Average Change:  "+(totalChange/(finances.length-1)).toFixed(2))
 divAvgCngE.append("Average Change: " + (totalChange/(finances.length-1)).toFixed(2)) //-2315.12")
 divAvgCngE.addClass("div-centered")
 var divGrtIncE = $("<div>")
+console.log("Greatest Increase in Profits/Losses:   "+bigChange)
 divGrtIncE.append("Greatest Increase in Profits/Losses:  "+ "  " + bigChangeDate+"  ($"+ bigChange+")")
 divGrtIncE.addClass("div-centered")
 var divGrtDreE = $("<div>")
+console.log("Greatest Decrease in Profits/Losses:   "+smalChange)
 divGrtDreE.append("Greatest Decrease in Profits/Losses:  "+ "  " + smalChangeDate+"  ($"+ smalChange+")")
 divGrtDreE.addClass("div-centered")
 bodyE.append(divE, divTotalE, divAvgCngE, divGrtIncE, divGrtDreE)
